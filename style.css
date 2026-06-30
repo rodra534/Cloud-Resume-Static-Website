@@ -1,0 +1,338 @@
+/* --- CONFIGURACIÓN GENERAL Y FUENTES --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+/* Contenedor tamaño A4 estándar */
+.resume-container {
+    width: 210mm;
+    min-height: 297mm;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* --- BANNER SUPERIOR (HEADER) --- */
+.main-header {
+    background-color: #2e3a4e; /* Azul oscuro corporativo */
+    color: #ffffff;
+    padding: 40px 40px 40px 32%; /* Empujado a la derecha para alinear con el contenido */
+    display: flex;
+    align-items: center;
+    min-height: 140px;
+}
+
+.header-text h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.header-text h2 {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #b0c4de; /* Azul claro para subtítulo */
+}
+
+/* --- CUERPO DEL CV (2 COLUMNAS) --- */
+.resume-body {
+    display: flex;
+    flex: 1;
+}
+
+/* --- COLUMNA IZQUIERDA (SIDEBAR) --- */
+.sidebar {
+    width: 28%;
+    background-color: #eef1f6; /* Gris claro/azulado de fondo */
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+/* Foto de Perfil */
+.profile-img-container {
+    /* Forzamos dimensiones idénticas para asegurar un cuadrado perfecto */
+    width: 130px; 
+    height: 130px; /* Mismo valor que width */
+    
+    /* Esta propiedad moderna asegura que siga siendo cuadrado si cambias el tamaño */
+    aspect-ratio: 1 / 1; 
+    
+    /* Hacemos el círculo */
+    border-radius: 50%; 
+    
+    /* Importante: oculta cualquier parte de la imagen que sobresalga del círculo */
+    overflow: hidden; 
+    
+    /* Estilos estéticos de la imagen original */
+    border: 5px solid #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    
+    /* Posicionamiento flotando sobre el banner */
+    position: absolute;
+    top: -85px; /* Ajustado ligeramente para centrar mejor visualmente */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    
+    /* Fondo gris claro por si la imagen tarda en cargar */
+    background-color: #e2e8f0; 
+    
+    /* Centrado interno por seguridad */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-img {
+    /* La imagen ocupa todo el contenedor */
+    width: 100%;
+    height: 100%;
+    
+    /* 'cover' asegura que la imagen se reescale para llenar el círculo sin deformarse, 
+       cortando los bordes si no es cuadrada */
+    object-fit: cover; 
+    
+    /* Centra la parte visible de la imagen */
+    object-position: center; 
+}
+/* Estilos de bloques del Sidebar */
+.sidebar-section {
+    width: 100%;
+    margin-top: 30px;
+}
+
+/* El primer elemento se separa más debido a la foto */
+.sidebar-section:first-of-type {
+    margin-top: 70px;
+}
+
+.sidebar-section h3 {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #2e3a4e;
+    margin-bottom: 5px;
+}
+
+.sidebar-divider {
+    border: 0;
+    height: 1px;
+    background-color: #bccbdc;
+    margin-bottom: 12px;
+}
+
+/* Listas del Sidebar */
+.sidebar-section ul {
+    list-style: none;
+}
+
+.contact-list li, .skills-list li, .languages-list li {
+    font-size: 11.5px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    color: #4a5568;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+}
+
+.contact-list .icon {
+    margin-right: 8px;
+    font-size: 12px;
+}
+
+.skills-list li strong {
+    color: #2e3a4e;
+}
+
+/* --- COLUMNA DERECHA (CONTENIDO PRINCIPAL) --- */
+.main-content {
+    width: 72%;
+    padding: 40px 40px 30px 40px;
+}
+
+.content-section {
+    margin-bottom: 30px;
+}
+
+/* Encabezados con icono circular al lado */
+.section-title-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.section-icon {
+    background-color: #2e3a4e;
+    color: #ffffff;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    margin-right: 12px;
+    z-index: 2;
+}
+
+.section-title-container h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #2e3a4e;
+    letter-spacing: 1px;
+}
+
+.profile-text {
+    font-size: 12px;
+    line-height: 1.6;
+    color: #4a5568;
+    text-align: justify;
+}
+
+/* --- DISEÑO DE LÍNEA DE TIEMPO (TIMELINE) --- */
+.timeline-section {
+    position: relative;
+}
+
+/* Línea vertical gris que une las secciones */
+.timeline-container {
+    border-left: 1px solid #bccbdc;
+    padding-left: 20px;
+    margin-left: 12px; /* Alineado exactamente debajo del icono redondo */
+    margin-top: -5px;
+}
+
+.timeline-item {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+/* Nodo o punto en la línea de tiempo */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24.5px;
+    top: 4px;
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff;
+    border: 2px solid #2e3a4e;
+    border-radius: 50%;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+}
+
+.job-header h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #2e3a4e;
+}
+
+.date {
+    font-size: 11px;
+    font-weight: bold;
+    color: #718096;
+    white-space: nowrap;
+}
+
+.job-description {
+    list-style-type: disc;
+    padding-left: 15px;
+}
+
+.job-description li {
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: #4a5568;
+    margin-bottom: 5px;
+    text-align: justify;
+}
+
+/* Educación */
+.education-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.edu-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #4a5568;
+}
+
+.edu-row p {
+    flex: 1;
+    margin-left: 8px;
+}
+
+.bullet-dot {
+    color: #2e3a4e;
+    font-size: 14px;
+}
+
+/* --- BOTÓN DE IMPRESIÓN INTERACTIVO --- */
+.print-button-container {
+    margin-bottom: 15px;
+}
+
+.print-button-container button {
+    padding: 10px 20px;
+    background-color: #2e3a4e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.print-button-container button:hover {
+    background-color: #1a2433;
+}
+
+/* --- REGLAS EXCLUSIVAS PARA IMPRESIÓN (PDF) --- */
+@media print {
+    body {
+        background-color: #ffffff;
+        padding: 0;
+    }
+    .resume-container {
+        box-shadow: none;
+        width: 210mm;
+        height: 297mm;
+    }
+    .no-print {
+        display: none !important;
+    }
+}
